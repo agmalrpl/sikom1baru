@@ -19,8 +19,12 @@
                 <a href="{{ route('buku.create') }}" class="btn btn-sm btn-danger"><i
                     class="fa fa-plus"></i> Tambah</a></a>
             <!-- BUTTON MODAL IMPORT EXCEL -->
-            <button onclick="formImport()" class="btn btn-sm btn-warning"><i
+            <button data-bs-toggle="modal" data-bs-target="#ImportBuku" class="btn btn-sm btn-warning"><i
                     class="fa fa-upload me-2"></i> Import</button>
+                    @csrf
+                    <div class="form-group">
+                        <input type="file" name="file" required>
+                    </div>
             <!-- BUTTON DROPDOWN -->
             <div class="dropdown">
                 <!-- BUTTON UNTUK MELAKUKAN EXPORT PDF -->
@@ -30,8 +34,7 @@
                 </button>
                 <!-- BUTTON UNTUK MELAKUKAN EXPORT EXCEL -->
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href={{ route('export_excel_buku') }} 
-                        onclick="exportExcel()">Excel</a>
+                    <a class="dropdown-item" href={{ route('export_excel_buku') }} >Excel</a>
                     <a class="dropdown-item" href={{ route('export_pdf_buku') }} onclick="exportPdf()">PDF</a>
                 </div>
             </div>
@@ -80,4 +83,5 @@
         </div><!-- bd -->
     </div><!-- bd -->
 </div>
+@include('data_buku.importBuku')
 @endsection

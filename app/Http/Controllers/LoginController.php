@@ -47,7 +47,7 @@ class LoginController extends Controller
         //KALO DATANYA TIDAK SAMA MAKA KEMBALI KE HALAMAN SEMULA 
         return back(); 
     } 
- 
+
     public function logout() 
     { 
         Auth::logout(); // PROSES LOGOUT 

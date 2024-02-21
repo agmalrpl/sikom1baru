@@ -1,4 +1,4 @@
-<table>
+{{-- <table>
     <tbody>
         <tr>
             <td colspan="9" style="font-weight:bold;text-align:center">DATA BUKU</td>
@@ -7,7 +7,7 @@
             <td colspan="9" style="font-weight:bold;text-align:center">Waktu Export : {{date('d-m-Y H:i')}}</td>
         </tr>
     </tbody>
-</table>
+</table> --}}
 <table>
     <thead>
     <tr>
@@ -16,7 +16,6 @@
         <th style="font-weight:bold;text-align:center;background:#f4f4f4;border:1px solid #000000;">Penulis</th> <!-- kolom C -->
         <th style="font-weight:bold;text-align:center;background:#f4f4f4;border:1px solid #000000;">Penerbit</th> <!-- kolom D -->
         <th style="font-weight:bold;text-align:center;background:#f4f4f4;border:1px solid #000000;">Tahun Terbit</th> <!-- kolom E -->
-        <th style="font-weight:bold;text-align:center;background:#f4f4f4;border:1px solid #000000;">Waktu Input</th> <!-- kolom F -->
     </tr>
     </thead>
     <tbody>
@@ -29,7 +28,6 @@
             <td>{{$dt->penulis??''}}</td>
             <td>{{$dt->penerbit??''}}</td>
             <td>{{$dt->tahun_terbit??''}}</td>
-            <td>{{$dt->created_at??''}}</td>
         </tr>
     @endforeach
     @endif

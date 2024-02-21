@@ -1,17 +1,38 @@
 <?php
-
 namespace App\Exports;
 
-use App\Models\Buku;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class BukuExport implements FromCollection
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
+
+class BukuExport implements FromView, WithEvents
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    protected $data;
+
+    public function __construct($data)
     {
-        return Buku::all();
+        $this->data = $data;
+    }
+
+    public function view(): View
+    {
+        return view('data_buku.exportExcelBuku', [
+            'data' => $this->data
+        ]);
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+                // Auto-width each column
+                foreach ($event->sheet->getColumnIterator() as $column) {
+                    $column = $column->getColumnIndex();
+                    $event->sheet->getColumnDimension($column)->setAutoSize(true);
+                }
+            },
+        ];
     }
 }
